@@ -1,4 +1,4 @@
-# parser-key-value-pair
+# parser_pair(string $string): array
 ![Packagist Version](https://img.shields.io/packagist/v/hyqo/parser-key-value-pair?style=flat-square)
 ![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/hyqo/parser-key-value-pair?style=flat-square)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/hyqo/parser-key-value-pair/run-tests?style=flat-square)
