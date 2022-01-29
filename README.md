@@ -1,7 +1,7 @@
-# parser_pair(string $string): array
-![Packagist Version](https://img.shields.io/packagist/v/hyqo/parser_pair?style=flat-square)
-![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/hyqo/parser_pair?style=flat-square)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/hyqo/parser_pair/run-tests?style=flat-square)
+# parse_pair(string $string): array
+![Packagist Version](https://img.shields.io/packagist/v/hyqo/parse_pair?style=flat-square)
+![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/hyqo/parse_pair?style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/hyqo/parse_pair/run-tests?style=flat-square)
 ## Why not parse_str?
 Because `parse_str` works only with a URL query string format.
 
@@ -17,7 +17,7 @@ We have double-quoted value `"bar"`. Instead, you can use `parse_pair` and if va
 ## Install
 
 ```sh
-composer require hyqo/parser_pair
+composer require hyqo/parse_pair
 ```
 
 ## Usage
