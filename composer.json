@@ -18,7 +18,7 @@
     },
     "autoload": {
         "files": [
-            "src/parse_pair.php"
+            "src/functions.php"
         ]
     },
     "autoload-dev": {

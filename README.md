@@ -12,7 +12,7 @@ array(1) {
   string(5) ""bar""
 }
 ```
-We have double-quoted value `"bar"`. Instead, you can use `parse_pair` and if value is a valid double-quoted or a valid single-quoted value it will be expanded
+We have double-quoted value `"bar"`. Instead, you can use `parse_pair` and if value is a valid double-quoted it will be expanded
 
 ## Install
 
@@ -38,11 +38,9 @@ If string is valid, it will be parsed:
 | `foo=""`            | `foo` | empty string       | 
 | `foo=bar`           | `foo` | `bar`              | 
 | `foo="bar"`         | `foo` | `bar`              | 
-| `foo='bar'`         | `foo` | `bar`              |
 | `foo="\"bar\""`     | `foo` | `"bar"`            |
 | `foo="\"bar"`       | `foo` | `"bar`             |
 | `foo="multi\nline"` | `foo` | `multi`<br/>`line` |
-| `foo='multi\nline'` | `foo` | `multi\nline`      |
 
 
 If string is invalid, result will be `null`:
