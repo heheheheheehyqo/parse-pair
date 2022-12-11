@@ -47,7 +47,7 @@ function parse_pair(string $string, bool $throwOnError = false): ?array
 
 function build_pair(?string $key, ?string $value): string
 {
-    if (!preg_match('/^[\w]+$/', $key)) {
+    if (!preg_match('/^\w+$/', $key)) {
         throw new \InvalidArgumentException('Key must contains only a-zA-Z0-9_');
     }
 
@@ -63,7 +63,7 @@ function build_pair(?string $key, ?string $value): string
         $value = preg_replace(array_keys($whitespaces), array_values($whitespaces), $value);
     }
 
-    if (preg_match('/[\W]+/', $value)) {
+    if (preg_match('/\W+/', $value)) {
         $value = sprintf('"%s"', addcslashes($value, '"'));
     }
 
