@@ -19,30 +19,20 @@ function parse_pair(string $string, bool $throwOnError = false): ?array
     $key = $matches['key'];
 
     if (!$matches['value']) {
-        $value = '';
-    } else {
-        $value = $matches['value'];
-
-        if (isQuoted($value)) {
-            if (null === $value = getQuotedValue($value)) {
-                return $error();
-            }
-
-            $value = stripcslashes($value);
-        } else {
-            if (!preg_match(
-                '/^(?P<value>[^\s"\']*)$/',
-                $value,
-                $matches
-            )) {
-                return $error();
-            }
-
-            $value = $matches['value'];
-        }
+        return [$key, ''];
     }
 
-    return [$key, $value];
+    $value = $matches['value'];
+
+    if (null !== $unquotedValue = getQuotedValue($value)) {
+        return [$key, $unquotedValue];
+    }
+
+    if (preg_match('/^(?P<value>[^\s"\']*)$/', $value, $matches)) {
+        return [$key, $matches['value']];
+    }
+
+    return $error();
 }
 
 function build_pair(?string $key, ?string $value): string
@@ -70,19 +60,18 @@ function build_pair(?string $key, ?string $value): string
     return sprintf("%s=%s", $key, $value);
 }
 
-function isQuoted(string $string)
-{
-    return preg_match('/^".*"$/', $string);
-}
-
 function getQuotedValue(string $string): ?string
 {
     if (preg_match(
-        '/^"(?P<value>(?:(?:\\\\\\\\)+\\\\"|(?<!\\\\)\\\\"|\\\\[^"]|[^"\\\\])*)"$/',
+        '/^(?:"(?P<double_quoted>(?:(?:\\\\\\\\)+\\\\"|(?<!\\\\)\\\\"|\\\\[^"]|[^"\\\\])*)"|\'(?P<quoted>(?:(?:\\\\\\\\)+\\\\\'|(?<!\\\\)\\\\\'|\\\\[^\']|[^\'\\\\])*)\')$/',
         $string,
         $matches
     )) {
-        return $matches['value'];
+        if (null !== ($value = $matches['quoted'] ?? null)) {
+            return $value;
+        }
+
+        return stripcslashes($matches['double_quoted']);
     }
 
     return null;

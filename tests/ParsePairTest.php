@@ -14,20 +14,23 @@ class ParsePairTest extends TestCase
         $this->assertNull(parse_pair(''));
         $this->assertNull(parse_pair('foo'));
         $this->assertNull(parse_pair('foo = """'));
+        $this->assertNull(parse_pair("foo = '''"));
         $this->assertNull(parse_pair('foo="bar'));
-        $this->assertNull(parse_pair('foo=\'bar\''));
+        $this->assertNull(parse_pair("foo='bar"));
         $this->assertEquals(['for', '192.0.2.43'], parse_pair('for=192.0.2.43'));
         $this->assertEquals(['foo', ''], parse_pair('foo='));
-        $this->assertEquals(['foo', 'bar'], parse_pair('foo=bar'));
-        $this->assertEquals(['foo', 'bar'], parse_pair('foo="bar"'));
+        $this->assertEquals(['foo', ''], parse_pair('foo=\'\''));
         $this->assertEquals(['foo', ''], parse_pair('foo=""'));
+        $this->assertEquals(['foo', 'bar'], parse_pair('foo=bar'));
+        $this->assertEquals(['foo', 'bar'], parse_pair('foo=\'bar\''));
+        $this->assertEquals(['foo', 'bar'], parse_pair('foo="bar"'));
         $this->assertEquals(['foo', '🐘'], parse_pair('foo=🐘'));
         $this->assertEquals(['foo', '🐘'], parse_pair('foo="🐘"'));
         $this->assertEquals(['foo', '"🐘'], parse_pair('foo="\"🐘"'));
         $this->assertEquals(['foo', "bar\nbaz"], parse_pair('foo="bar\nbaz"'));
         $this->assertEquals(['foo', "multi\nline"], parse_pair('foo="multi\nline"'));
         $this->assertEquals(['foo', "\n\t\r"], parse_pair('foo="\n\t\r"'));
-        $this->assertNull(parse_pair('foo=\'\n\t\r\''));
+        $this->assertEquals(['foo', '\n\t\r'], parse_pair('foo=\'\n\t\r\''));
 
         for ($i = 0; $i < 1000; $i++) {
             $string = sprintf('foo="%s"bar"', str_repeat('\\', $i));
