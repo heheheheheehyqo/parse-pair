@@ -1,7 +1,7 @@
 # parse_pair(string $string): array
 ![Packagist Version](https://img.shields.io/packagist/v/hyqo/parse-pair?style=flat-square)
 ![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/hyqo/parse-pair?style=flat-square)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/hyqo/parse-pair/run-tests?style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/hyqo/parse-pair/run-tests?style=flat-square&label=tests)
 ## Why not parse_str?
 Because `parse_str` works only with a URL query string format.
 
