@@ -31,7 +31,7 @@ composer require hyqo/parse_pair
 ```php
 use function Hyqo\Parser\parse_pair;
 
-[$key, $value] = parse_str('foo=bar');
+[$key, $value] = parse_pair('foo="bar"');
 
 echo $key; //foo
 echo $bar; //bar
