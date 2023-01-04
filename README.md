@@ -41,7 +41,7 @@ If string is valid, it will be parsed:
 
 | string              | key   | value              |
 |---------------------|-------|--------------------|
-| `foo=`              | `foo` | null               | 
+| `foo=`              | `foo` | empty string               | 
 | `foo=""`            | `foo` | empty string       | 
 | `foo=bar`           | `foo` | `bar`              | 
 | `foo="bar"`         | `foo` | `bar`              | 
