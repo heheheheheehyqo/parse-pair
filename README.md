@@ -2,7 +2,7 @@
 
 ![Packagist Version](https://img.shields.io/packagist/v/hyqo/parse-pair?style=flat-square)
 ![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/hyqo/parse-pair?style=flat-square)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/hyqo/parse-pair/run-tests?style=flat-square&label=tests)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/hyqo/parse-pair/tests.yml?branch=main&label=tests&style=flat-square)
 
 ## Why not parse_str?
 
