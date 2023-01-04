@@ -18,6 +18,7 @@ class ParsePairTest extends TestCase
         $this->assertNull(parse_pair('foo="bar'));
         $this->assertNull(parse_pair("foo='bar"));
         $this->assertEquals(['for', '192.0.2.43'], parse_pair('for=192.0.2.43'));
+        $this->assertEquals(['foo', 0], parse_pair('foo=0'));
         $this->assertEquals(['foo', ''], parse_pair('foo='));
         $this->assertEquals(['foo', ''], parse_pair('foo=\'\''));
         $this->assertEquals(['foo', ''], parse_pair('foo=""'));
@@ -38,7 +39,9 @@ class ParsePairTest extends TestCase
             if ($i % 2 === 0) {
                 $this->assertNull(parse_pair($string), $string);
             } else {
-                $this->assertEquals(['foo', sprintf('%s"bar', str_repeat('\\', ($i - 1) / 2))], parse_pair($string), $string);
+                $this->assertEquals(['foo', sprintf('%s"bar', str_repeat('\\', ($i - 1) / 2))],
+                    parse_pair($string),
+                    $string);
             }
         }
     }

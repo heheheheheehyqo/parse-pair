@@ -18,7 +18,7 @@ function parse_pair(string $string, bool $throwOnError = false): ?array
 
     $key = $matches['key'];
 
-    if (!$matches['value']) {
+    if (!isset($matches['value'])) {
         return [$key, ''];
     }
 
